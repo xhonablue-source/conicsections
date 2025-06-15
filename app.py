@@ -795,3 +795,4 @@ st.markdown("""
 - **Historical Context**: Research ancient Greek mathematicians who discovered these curves
 
 *MathCraft modules are designed to meet rigorous academic standards while fostering deep conceptual understanding through hands-on exploration and real-world applications.*
+""")
