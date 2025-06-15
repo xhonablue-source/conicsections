@@ -1,7 +1,12 @@
 import streamlit as st
-import matplotlib.pyplot as plt
 import numpy as np
 import math
+
+# Configure matplotlib for Streamlit
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
+import matplotlib.pyplot as plt
+plt.style.use('default')  # Ensure consistent styling
 
 st.set_page_config(page_title="MathCraft | Conic Sections", layout="wide")
 st.title("🔷 MathCraft: Exploring Conic Sections")
