@@ -1,7 +1,9 @@
 # app.py
 import streamlit as st
 import streamlit.components.v1 as components
-import os
+import matplotlib.pyplot as plt
+import numpy as np
+import io
 
 # Page config
 st.set_page_config(
@@ -9,6 +11,97 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+@st.cache_data
+def generate_conic_images():
+    """Generate matplotlib plots for each conic section"""
+    images = {}
+    
+    # Set up the plot style
+    plt.style.use('dark_background')
+    
+    # Circle
+    fig, ax = plt.subplots(figsize=(4, 4), facecolor='black')
+    theta = np.linspace(0, 2*np.pi, 100)
+    x = 2 * np.cos(theta)
+    y = 2 * np.sin(theta)
+    ax.plot(x, y, 'red', linewidth=3)
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(-3, 3)
+    ax.set_aspect('equal')
+    ax.grid(True, alpha=0.3)
+    ax.set_title('Circle', color='white', fontsize=16)
+    ax.set_facecolor('black')
+    
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', facecolor='black', bbox_inches='tight')
+    buf.seek(0)
+    images['Circle'] = buf
+    plt.close()
+    
+    # Ellipse
+    fig, ax = plt.subplots(figsize=(4, 4), facecolor='black')
+    theta = np.linspace(0, 2*np.pi, 100)
+    x = 3 * np.cos(theta)
+    y = 1.5 * np.sin(theta)
+    ax.plot(x, y, 'blue', linewidth=3)
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-3, 3)
+    ax.set_aspect('equal')
+    ax.grid(True, alpha=0.3)
+    ax.set_title('Ellipse', color='white', fontsize=16)
+    ax.set_facecolor('black')
+    
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', facecolor='black', bbox_inches='tight')
+    buf.seek(0)
+    images['Ellipse'] = buf
+    plt.close()
+    
+    # Parabola
+    fig, ax = plt.subplots(figsize=(4, 4), facecolor='black')
+    x = np.linspace(-3, 3, 100)
+    y = x**2
+    ax.plot(x, y, 'yellow', linewidth=3)
+    ax.set_xlim(-4, 4)
+    ax.set_ylim(-1, 10)
+    ax.grid(True, alpha=0.3)
+    ax.set_title('Parabola', color='white', fontsize=16)
+    ax.set_facecolor('black')
+    
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', facecolor='black', bbox_inches='tight')
+    buf.seek(0)
+    images['Parabola'] = buf
+    plt.close()
+    
+    # Hyperbola
+    fig, ax = plt.subplots(figsize=(4, 4), facecolor='black')
+    x1 = np.linspace(2, 5, 50)
+    x2 = np.linspace(-5, -2, 50)
+    y1 = np.sqrt(x1**2 - 4)
+    y2 = -np.sqrt(x1**2 - 4)
+    y3 = np.sqrt(x2**2 - 4)
+    y4 = -np.sqrt(x2**2 - 4)
+    
+    ax.plot(x1, y1, 'green', linewidth=3)
+    ax.plot(x1, y2, 'green', linewidth=3)
+    ax.plot(x2, y3, 'green', linewidth=3)
+    ax.plot(x2, y4, 'green', linewidth=3)
+    
+    ax.set_xlim(-6, 6)
+    ax.set_ylim(-4, 4)
+    ax.grid(True, alpha=0.3)
+    ax.set_title('Hyperbola', color='white', fontsize=16)
+    ax.set_facecolor('black')
+    
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png', facecolor='black', bbox_inches='tight')
+    buf.seek(0)
+    images['Hyperbola'] = buf
+    plt.close()
+    
+    return images
 
 # Header
 st.markdown("""
@@ -41,20 +134,25 @@ st.markdown("""
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
 """)
 
-# Visual Aid Chart with Image Display
+# Visual Aid Chart with Generated Images
 st.markdown("""
 ### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions
 """)
+
+# Generate images
+conic_images = generate_conic_images()
+
 cols = st.columns(4)
 conic_data = {
-    "Circle": ("(x - h)² + (y - k)² = r²", "Red circle centered at (h,k)", os.path.join("images", "circle.png")),
-    "Ellipse": ("(x - h)² / a² + (y - k)² / b² = 1", "Blue stretched oval across axes", os.path.join("images", "ellipse.png")),
-    "Parabola": ("(y - k)² = 4p(x - h)", "Yellow curved V shape", os.path.join("images", "parabola.png")),
-    "Hyperbola": ("(y - k)² / a² - (x - h)² / b² = 1", "Green mirrored arcs (open sideways)", os.path.join("images", "hyperbola.png"))
+    "Circle": ("(x - h)² + (y - k)² = r²", "Red circle centered at (h,k)"),
+    "Ellipse": ("(x - h)² / a² + (y - k)² / b² = 1", "Blue stretched oval across axes"),
+    "Parabola": ("(y - k)² = 4p(x - h)", "Yellow curved V shape"),
+    "Hyperbola": ("(y - k)² / a² - (x - h)² / b² = 1", "Green mirrored arcs (open sideways)")
 }
-for i, (shape, (eq, desc, img_path)) in enumerate(conic_data.items()):
+
+for i, (shape, (eq, desc)) in enumerate(conic_data.items()):
     with cols[i]:
-        st.image(img_path, caption=shape, use_container_width=True)
+        st.image(conic_images[shape], caption=shape, use_container_width=True)
         st.markdown(f"**Equation**: `{eq}`\n\n**Visual**: {desc}")
 
 st.markdown("""
@@ -105,7 +203,7 @@ st.selectbox("Select Standard Framework", ["Common Core", "Texas TEKS", "Massach
 # Quiz
 st.markdown("""
 ### 🎮 Quick Quiz
-1. What conic section results from a vertical slice through the cone’s axis?
+1. What conic section results from a vertical slice through the cone's axis?
    - [ ] Ellipse
    - [x] Hyperbola
    - [ ] Parabola
@@ -117,7 +215,7 @@ st.markdown("""
    - [x] Parabola
    - [ ] Hyperbola
 
-3. What happens as the plane becomes parallel to a cone’s slant?
+3. What happens as the plane becomes parallel to a cone's slant?
    - [ ] A hyperbola appears
    - [x] A parabola forms
    - [ ] The cone disappears
@@ -136,4 +234,3 @@ st.markdown("""
 ---
 <center>Built by Xavier Honablue M.Ed for CognitiveCloud.ai</center>
 """)
-
