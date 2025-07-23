@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 import numpy as np
 import io
-from PIL import Image  # Required for loading local image
+from PIL import Image
 
 # Page config
 st.set_page_config(
@@ -17,7 +17,6 @@ st.set_page_config(
 def generate_conic_images():
     """Generate matplotlib plots for each conic section"""
     images = {}
-
     plt.style.use('default')
 
     # Circle
@@ -136,19 +135,22 @@ So the point **(h, k)** tells you where the conic section is positioned on the g
 """)
 
 # 3D + 2D Comparison Illustration
-st.markdown("### 🧊 3D & 2D Comparison of Conic Sections")
+st.markdown("### 🧠 Visualizing 3D to 2D: How Conic Sections Are Formed")
 st.markdown("""
-This image combines the **3D cone slicing perspective** with the resulting **2D graph shapes**.  
-It helps you visually connect how:
-- A **horizontal slice** gives a **circle**
-- An **angled slice** gives an **ellipse**
-- A **slant-parallel slice** gives a **parabola**
-- A **vertical slice through both cones** gives a **hyperbola**
+This diagram shows two key insights:
 
-Notice how each shape corresponds to a specific slicing angle — and how they all relate on the xy-plane.
+- **Top row:** A 3D cone sliced by a plane, forming different conic sections.
+- **Bottom row:** The resulting 2D shapes plotted on a coordinate grid.
+
+Understanding how each conic is created helps students *see* why their equations look the way they do:
+- Circles and ellipses from horizontal and angled slices
+- Parabolas from parallel slices
+- Hyperbolas from intersecting both nappes
+
+These visuals bridge algebra with spatial reasoning — a powerful tool for geometry learners.
 """)
 try:
-    image = Image.open("conic_3d.png")
+    image = Image.open("9ee968e2-917e-4b27-95e7-8791ead7adfc.png")  # Replace with your correct filename
     st.image(image, caption="Combined 3D Cone Slices and 2D Graphs", use_column_width=True)
 except Exception as e:
     st.error(f"Could not load the updated 3D/2D image: {e}")
@@ -174,7 +176,6 @@ except Exception as e:
 
 # Matching Activity
 st.markdown("### ↺ Conic Section Matching Activity")
-
 col1, col2, col3 = st.columns(3)
 with col1:
     conic_type = st.selectbox("🔹 Select Conic Type", ["Circle", "Ellipse", "Parabola", "Hyperbola"])
