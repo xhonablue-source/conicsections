@@ -49,6 +49,8 @@ st.markdown("""
 | Ellipse    | (x - h)² / a² + (y - k)² / b² = 1 | 🔵 Blue stretched oval across axes |
 | Parabola   | (y - k)² = 4p(x - h) | 🟡 Yellow curved V shape |
 | Hyperbola  | (y - k)² / a² - (x - h)² / b² = 1 | 🟢 Green mirrored arcs (open sideways) |
+
+💡 Use this chart as your key reference when making selections in the matching activity below.
 """)
 
 # Matching Chart for Conic Types
