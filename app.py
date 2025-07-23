@@ -134,10 +134,23 @@ In all conic section equations, **`h` and `k`** represent the coordinates of the
 So the point **(h, k)** tells you where the conic section is positioned on the graph.
 """)
 
-# Visual Aid Chart with Generated Images
+# 3D Perspective Illustration
+st.markdown("### 🧊 3D Perspective of Conic Sections")
 st.markdown("""
-### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions
+Understanding how 2D conic sections emerge from slicing a 3D cone is essential in geometry and real-world modeling.
+
+The illustration below shows how different slices through a double-napped cone create:
+- A **Parabola**
+- A **Circle**
+- An **Ellipse**
+- A **Hyperbola**
+
+These shapes are everywhere — from telescope mirrors to planetary motion.
 """)
+st.image("assets/conic_3d.png", caption="3D View of Conic Sections", use_column_width=True)
+
+# Visual Aid Chart with Generated Images
+st.markdown("### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions")
 
 try:
     conic_images = generate_conic_images()
@@ -191,9 +204,7 @@ if st.button("🔎 Check Match"):
         st.error("❌ Try Again — Mismatch Detected")
 
 # Standards Dropdown
-st.markdown("""
-### 🏷️ Standards Reference
-""")
+st.markdown("### 🏷️ Standards Reference")
 st.selectbox("Select Standard Framework", ["Common Core", "Texas TEKS", "Massachusetts MA-FRAME"])
 
 # Quiz
