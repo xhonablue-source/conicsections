@@ -1,6 +1,7 @@
 # app.py
 import streamlit as st
 import streamlit.components.v1 as components
+import os
 
 # Page config
 st.set_page_config(
@@ -40,34 +41,24 @@ st.markdown("""
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
 """)
 
-# Visual Aid Chart with Reference Diagram
+# Visual Aid Chart with Image Display
 st.markdown("""
 ### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions
-| Conic Type | Standard Equation | Visual Description |
-|------------|-------------------|---------------------|
-| Circle     | (x - h)² + (y - k)² = r² | 🟥 Red circle centered at (h,k) |
-| Ellipse    | (x - h)² / a² + (y - k)² / b² = 1 | 🔵 Blue stretched oval across axes |
-| Parabola   | (y - k)² = 4p(x - h) | 🟡 Yellow curved V shape |
-| Hyperbola  | (y - k)² / a² - (x - h)² / b² = 1 | 🟢 Green mirrored arcs (open sideways) |
+""")
+cols = st.columns(4)
+conic_data = {
+    "Circle": ("(x - h)² + (y - k)² = r²", "Red circle centered at (h,k)", "images/circle.png"),
+    "Ellipse": ("(x - h)² / a² + (y - k)² / b² = 1", "Blue stretched oval across axes", "images/ellipse.png"),
+    "Parabola": ("(y - k)² = 4p(x - h)", "Yellow curved V shape", "images/parabola.png"),
+    "Hyperbola": ("(y - k)² / a² - (x - h)² / b² = 1", "Green mirrored arcs (open sideways)", "images/hyperbola.png")
+}
+for i, (shape, (eq, desc, img_path)) in enumerate(conic_data.items()):
+    with cols[i]:
+        st.image(img_path, caption=shape, use_column_width=True)
+        st.markdown(f"**Equation**: `{eq}`\n\n**Visual**: {desc}")
 
+st.markdown("""
 <small>💡 Use this chart as your key reference when making selections in the matching activity below.</small>
-
-![Conic Intersections](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Conic_Sections.svg/800px-Conic_Sections.svg.png)
-
-📷 **Conic Section Geometry Reference**
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Conic_Sections_Geometry.png" width="100%"/>
-
----
-
-📌 **Interactive Visual Examples:**
-
-- **Circle**: ![Circle](https://saylordotorg.github.io/text_intermediate-algebra/section_11/073d4527d79aa2e0274fc7fc15e349a4.jpg)
-- **Ellipse**: ![Ellipse](https://saylordotorg.github.io/text_intermediate-algebra/section_11/7f84c60b7149e9c318c2a64a74f5ef39.jpg)
-- **Parabola**: ![Parabola](https://saylordotorg.github.io/text_intermediate-algebra/section_11/aeff1722207b5645c5b3f4440dc74900.jpg)
-- **Hyperbola**: ![Hyperbola](https://saylordotorg.github.io/text_intermediate-algebra/section_11/488bd1f22e54eab253b3f7fdf6fc8f4a.jpg)
-
-These diagrams match the shape descriptions in the dropdown menu and reinforce the connection between conic type, algebraic formula, and real-world formation.
 """, unsafe_allow_html=True)
 
 # Matching Chart for Conic Types
