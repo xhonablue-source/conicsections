@@ -40,17 +40,28 @@ st.markdown("""
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
 """)
 
+# Visual Aid Chart
+st.markdown("""
+### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions
+| Conic Type | Standard Equation | Visual Description |
+|------------|-------------------|---------------------|
+| Circle     | (x - h)² + (y - k)² = r² | 🄴 Red circle centered at (h,k) |
+| Ellipse    | (x - h)² / a² + (y - k)² / b² = 1 | 🔵 Blue stretched oval across axes |
+| Parabola   | (y - k)² = 4p(x - h) | 🟡 Yellow curved V shape |
+| Hyperbola  | (y - k)² / a² - (x - h)² / b² = 1 | 🟢 Green mirrored arcs (open sideways) |
+""")
+
 # Matching Chart for Conic Types
 st.markdown("""
-### 🔁 Conic Section Matching Activity
-Match the conic section type with its equation and shape. Use the dropdowns to select and test your understanding. Visual learners should use the color-coded shape descriptions.
+### ↺ Conic Section Matching Activity
+Match the conic section type with its equation and shape. Use the dropdowns to select and test your understanding. Visual learners should use the color-coded shape descriptions above as a reference.
 """)
 
 col1, col2, col3 = st.columns(3)
 with col1:
     conic_type = st.selectbox("🔵 Select Conic Type", ["Circle", "Ellipse", "Parabola", "Hyperbola"])
 with col2:
-    equation = st.selectbox("🧮 Match Equation", [
+    equation = st.selectbox("🧲 Match Equation", [
         "(x - h)² + (y - k)² = r²",
         "(x - h)² / a² + (y - k)² / b² = 1",
         "(y - k)² = 4p(x - h)",
@@ -67,7 +78,7 @@ with col3:
 # Feedback
 if st.button("🔎 Check Match"):
     correct = (conic_type == "Circle" and equation == "(x - h)² + (y - k)² = r²" and sketch.startswith("Red")) or \
-              (conic_type == "Ellipse" and "ellipse" not in equation and "oval" in sketch.lower()) or \
+              (conic_type == "Ellipse" and equation == "(x - h)² / a² + (y - k)² / b² = 1" and "oval" in sketch.lower()) or \
               (conic_type == "Parabola" and "4p" in equation and "V shape" in sketch) or \
               (conic_type == "Hyperbola" and "mirrored" in sketch.lower() and "-" in equation)
     if correct:
@@ -101,67 +112,6 @@ st.markdown("""
    - [x] A parabola forms
    - [ ] The cone disappears
 """)
-
-# 3D Visualizer Embed
-st.components.v1.html("""
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset=\"UTF-8\">
-  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js\"></script>
-  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js\"></script>
-  <style>
-    html, body { margin: 0; overflow: hidden; background: black; }
-    #three-container { width: 100vw; height: 80vh; }
-  </style>
-</head>
-<body>
-  <div id=\"three-container\"></div>
-  <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({antialias: true});
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById(\"three-container\").appendChild(renderer.domElement);
-
-    camera.position.set(0, 5, 10);
-
-    const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 10, 7.5);
-    scene.add(light);
-    scene.add(new THREE.AmbientLight(0x404040));
-
-    const coneGeometry = new THREE.ConeGeometry(2, 6, 64, 64, true);
-    coneGeometry.translate(0, -3, 0);
-    const coneMaterial = new THREE.MeshPhongMaterial({ color: 0x156289, side: THREE.DoubleSide, wireframe: true });
-    const cone = new THREE.Mesh(coneGeometry, coneMaterial);
-    scene.add(cone);
-
-    const planeGeometry = new THREE.PlaneGeometry(6, 6);
-    const planeMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00, side: THREE.DoubleSide, transparent: true, opacity: 0.4 });
-    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.rotation.x = Math.PI / 2;
-    scene.add(plane);
-
-    let guiParams = { planeRotationX: 90, planePositionY: 0 };
-    const gui = new dat.GUI();
-    gui.add(guiParams, 'planeRotationX', 0, 180).name(\"Plane Angle (°)\").onChange(updatePlane);
-    gui.add(guiParams, 'planePositionY', -3, 3).name(\"Plane Height\").onChange(updatePlane);
-
-    function updatePlane() {
-      plane.rotation.x = THREE.MathUtils.degToRad(guiParams.planeRotationX);
-      plane.position.y = guiParams.planePositionY;
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      renderer.render(scene, camera);
-    }
-    animate();
-  </script>
-</body>
-</html>
-""", height=700)
 
 # Resources and Practice
 st.markdown("""
