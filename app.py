@@ -40,18 +40,28 @@ st.markdown("""
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
 """)
 
-# Visual Aid Chart
+# Visual Aid Chart with Reference Diagram
 st.markdown("""
 ### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions
 | Conic Type | Standard Equation | Visual Description |
 |------------|-------------------|---------------------|
-| Circle     | (x - h)² + (y - k)² = r² | 🄴 Red circle centered at (h,k) |
+| Circle     | (x - h)² + (y - k)² = r² | 🟥 Red circle centered at (h,k) |
 | Ellipse    | (x - h)² / a² + (y - k)² / b² = 1 | 🔵 Blue stretched oval across axes |
 | Parabola   | (y - k)² = 4p(x - h) | 🟡 Yellow curved V shape |
 | Hyperbola  | (y - k)² / a² - (x - h)² / b² = 1 | 🟢 Green mirrored arcs (open sideways) |
 
-💡 Use this chart as your key reference when making selections in the matching activity below.
-""")
+<small>💡 Use this chart as your key reference when making selections in the matching activity below.</small>
+
+![Conic Intersections](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Conic_Sections.svg/800px-Conic_Sections.svg.png)
+
+---
+
+📷 **Conic Section Geometry Reference**
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Conic_Sections_Geometry.png" width="100%"/>
+
+Above: Diagrams showing how each conic section is formed from slicing a cone at different angles. These are visual anchors for circle, ellipse, parabola, and hyperbola.
+""", unsafe_allow_html=True)
 
 # Matching Chart for Conic Types
 st.markdown("""
@@ -63,7 +73,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     conic_type = st.selectbox("🔵 Select Conic Type", ["Circle", "Ellipse", "Parabola", "Hyperbola"])
 with col2:
-    equation = st.selectbox("🧲 Match Equation", [
+    equation = st.selectbox("🨲 Match Equation", [
         "(x - h)² + (y - k)² = r²",
         "(x - h)² / a² + (y - k)² / b² = 1",
         "(y - k)² = 4p(x - h)",
