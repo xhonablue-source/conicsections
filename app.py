@@ -229,6 +229,6 @@ st.markdown("""
 
 ---
 
-<center>Built by Xavier Honablue M.Ed for CognitiveCloud.ai</center>
+Built by Xavier Honablue M.Ed for CognitiveCloud.ai
 """)
 
