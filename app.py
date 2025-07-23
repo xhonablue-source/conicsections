@@ -114,7 +114,7 @@ This interactive visualization demonstrates how conic sections (circle, ellipse,
 </div>
 """, unsafe_allow_html=True)
 
-# Learning Objectives
+# Learning Objectives + h,k definitions
 st.markdown("""
 ### 🔍 Learning Objectives
 - Understand the geometric construction of conic sections
@@ -122,8 +122,16 @@ st.markdown("""
 - Connect mathematical theory to real-world applications
 
 **Standards Alignment:**
-- HSG.GPE.A.2 – Derive the equation of a parabola given a focus and directrix
+- HSG.GPE.A.2 – Derive the equation of a parabola given a focus and directrix  
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
+
+---
+
+### 📍 Understanding h and k
+In all conic section equations, **`h` and `k`** represent the coordinates of the **center** (or **vertex**, for parabolas):  
+- `h` shifts the graph **left or right**  
+- `k` shifts the graph **up or down**  
+So the point **(h, k)** tells you where the conic section is positioned on the graph.
 """)
 
 # Visual Aid Chart with Generated Images
@@ -220,5 +228,6 @@ st.markdown("""
 - [Saylor: Visual Conic Sections Reference](https://saylordotorg.github.io/text_intermediate-algebra/s11-conic-sections.html)
 
 ---
+
 <center>Built by Xavier Honablue M.Ed for CognitiveCloud.ai</center>
 """)
