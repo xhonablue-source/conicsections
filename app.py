@@ -47,14 +47,14 @@ st.markdown("""
 """)
 cols = st.columns(4)
 conic_data = {
-    "Circle": ("(x - h)² + (y - k)² = r²", "Red circle centered at (h,k)", "images/circle.png"),
-    "Ellipse": ("(x - h)² / a² + (y - k)² / b² = 1", "Blue stretched oval across axes", "images/ellipse.png"),
-    "Parabola": ("(y - k)² = 4p(x - h)", "Yellow curved V shape", "images/parabola.png"),
-    "Hyperbola": ("(y - k)² / a² - (x - h)² / b² = 1", "Green mirrored arcs (open sideways)", "images/hyperbola.png")
+    "Circle": ("(x - h)² + (y - k)² = r²", "Red circle centered at (h,k)", os.path.join("images", "circle.png")),
+    "Ellipse": ("(x - h)² / a² + (y - k)² / b² = 1", "Blue stretched oval across axes", os.path.join("images", "ellipse.png")),
+    "Parabola": ("(y - k)² = 4p(x - h)", "Yellow curved V shape", os.path.join("images", "parabola.png")),
+    "Hyperbola": ("(y - k)² / a² - (x - h)² / b² = 1", "Green mirrored arcs (open sideways)", os.path.join("images", "hyperbola.png"))
 }
 for i, (shape, (eq, desc, img_path)) in enumerate(conic_data.items()):
     with cols[i]:
-        st.image(img_path, caption=shape, use_column_width=True)
+        st.image(img_path, caption=shape, use_container_width=True)
         st.markdown(f"**Equation**: `{eq}`\n\n**Visual**: {desc}")
 
 st.markdown("""
@@ -136,3 +136,4 @@ st.markdown("""
 ---
 <center>Built by Xavier Honablue M.Ed for CognitiveCloud.ai</center>
 """)
+
