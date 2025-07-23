@@ -54,13 +54,20 @@ st.markdown("""
 
 ![Conic Intersections](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Conic_Sections.svg/800px-Conic_Sections.svg.png)
 
----
-
 📷 **Conic Section Geometry Reference**
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Conic_Sections_Geometry.png" width="100%"/>
 
-Above: Diagrams showing how each conic section is formed from slicing a cone at different angles. These are visual anchors for circle, ellipse, parabola, and hyperbola.
+---
+
+📌 **Interactive Visual Examples:**
+
+- **Circle**: ![Circle](https://saylordotorg.github.io/text_intermediate-algebra/section_11/073d4527d79aa2e0274fc7fc15e349a4.jpg)
+- **Ellipse**: ![Ellipse](https://saylordotorg.github.io/text_intermediate-algebra/section_11/7f84c60b7149e9c318c2a64a74f5ef39.jpg)
+- **Parabola**: ![Parabola](https://saylordotorg.github.io/text_intermediate-algebra/section_11/aeff1722207b5645c5b3f4440dc74900.jpg)
+- **Hyperbola**: ![Hyperbola](https://saylordotorg.github.io/text_intermediate-algebra/section_11/488bd1f22e54eab253b3f7fdf6fc8f4a.jpg)
+
+These diagrams match the shape descriptions in the dropdown menu and reinforce the connection between conic type, algebraic formula, and real-world formation.
 """, unsafe_allow_html=True)
 
 # Matching Chart for Conic Types
@@ -133,6 +140,7 @@ st.markdown("""
 - [GeoGebra Interactive Conic Tools](https://www.geogebra.org/m/edcuz7sa)
 - [NASA – Real-world uses of parabolas](https://spaceplace.nasa.gov/real-world-math/en/)
 - [YouTube: Conic Sections by The Organic Chemistry Tutor](https://www.youtube.com/watch?v=GUVFwUu8dO0)
+- [Saylor: Visual Conic Sections Reference](https://saylordotorg.github.io/text_intermediate-algebra/s11-conic-sections.html)
 
 ---
 <center>Built by Xavier Honablue M.Ed for CognitiveCloud.ai</center>
