@@ -43,6 +43,7 @@ st.markdown("""
 # Matching Chart for Conic Types
 st.markdown("""
 ### 🔁 Conic Section Matching Activity
+Match the conic section type with its equation and shape. Use the dropdowns to select and test your understanding. Visual learners should use the color-coded shape descriptions.
 """)
 
 col1, col2, col3 = st.columns(3)
@@ -73,6 +74,12 @@ if st.button("🔎 Check Match"):
         st.success("✅ Correct Match!")
     else:
         st.error("❌ Try Again — Mismatch Detected")
+
+# Standards Dropdown
+st.markdown("""
+### 🏷️ Standards Reference
+""")
+st.selectbox("Select Standard Framework", ["Common Core", "Texas TEKS", "Massachusetts MA-FRAME"])
 
 # Quiz
 st.markdown("""
