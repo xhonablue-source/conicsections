@@ -4,6 +4,7 @@ import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 import numpy as np
 import io
+from PIL import Image  # Required for loading local image
 
 # Page config
 st.set_page_config(
@@ -114,7 +115,7 @@ This interactive visualization demonstrates how conic sections (circle, ellipse,
 </div>
 """, unsafe_allow_html=True)
 
-# Learning Objectives + h,k definitions
+# Learning Objectives
 st.markdown("""
 ### 🔍 Learning Objectives
 - Understand the geometric construction of conic sections
@@ -134,20 +135,23 @@ In all conic section equations, **`h` and `k`** represent the coordinates of the
 So the point **(h, k)** tells you where the conic section is positioned on the graph.
 """)
 
-# 3D Perspective Illustration
-st.markdown("### 🧊 3D Perspective of Conic Sections")
+# 3D + 2D Comparison Illustration
+st.markdown("### 🧊 3D & 2D Comparison of Conic Sections")
 st.markdown("""
-Understanding how 2D conic sections emerge from slicing a 3D cone is essential in geometry and real-world modeling.
+This image combines the **3D cone slicing perspective** with the resulting **2D graph shapes**.  
+It helps you visually connect how:
+- A **horizontal slice** gives a **circle**
+- An **angled slice** gives an **ellipse**
+- A **slant-parallel slice** gives a **parabola**
+- A **vertical slice through both cones** gives a **hyperbola**
 
-The illustration below shows how different slices through a double-napped cone create:
-- A **Parabola**
-- A **Circle**
-- An **Ellipse**
-- A **Hyperbola**
-
-These shapes are everywhere — from telescope mirrors to planetary motion.
+Notice how each shape corresponds to a specific slicing angle — and how they all relate on the xy-plane.
 """)
-st.image("assets/conic_3d.png", caption="3D View of Conic Sections", use_column_width=True)
+try:
+    image = Image.open("conic_3d.png")
+    st.image(image, caption="Combined 3D Cone Slices and 2D Graphs", use_column_width=True)
+except Exception as e:
+    st.error(f"Could not load the updated 3D/2D image: {e}")
 
 # Visual Aid Chart with Generated Images
 st.markdown("### 🔹 Visual Aid: Match Shapes, Equations, and Descriptions")
@@ -168,11 +172,8 @@ try:
 except Exception as e:
     st.error(f"Error generating images: {e}")
 
-# Matching Chart for Conic Types
-st.markdown("""
-### ↺ Conic Section Matching Activity
-Match the conic section type with its equation and shape. Use the dropdowns to select and test your understanding. Visual learners should use the color-coded shape descriptions above as a reference.
-""")
+# Matching Activity
+st.markdown("### ↺ Conic Section Matching Activity")
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -192,7 +193,6 @@ with col3:
         "Green mirrored arcs (open sideways)"
     ])
 
-# Feedback
 if st.button("🔎 Check Match"):
     correct = (conic_type == "Circle" and equation == "(x - h)² + (y - k)² = r²" and sketch.startswith("Red")) or \
               (conic_type == "Ellipse" and equation == "(x - h)² / a² + (y - k)² / b² = 1" and "oval" in sketch.lower()) or \
@@ -228,7 +228,7 @@ st.markdown("""
    - [ ] The cone disappears
 """)
 
-# Resources and Practice
+# Resources
 st.markdown("""
 ### 📄 Practice and Resources
 - [IXL Skill G.10 – Identify conic sections](https://www.ixl.com/math/algebra-2/identify-conic-sections)
