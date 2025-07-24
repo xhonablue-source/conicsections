@@ -275,7 +275,7 @@ st.markdown("""
 - [Khan Academy – Conic Sections](https://www.khanacademy.org/math/geometry/geo-conic-sections)
 - [GeoGebra Interactive Conic Tools](https://www.geogebra.org/m/edcuz7sa)
 - [NASA – Real-world uses of parabolas](https://spaceplace.nasa.gov/real-world-math/en/)
-- [YouTube: Conic Sections by The Organic Chemistry Tutor](https://www.youtube.com/watch?v=GUVFwUu8dO0)
+- [YouTube: Conic Sections by The Organic Chemistry Tutor](https://www.youtube.com/watch?v=pQa_tWZmlGs)
 - [Saylor: Visual Conic Sections Reference](https://saylordotorg.github.io/text_intermediate-algebra/s11-conic-sections.html)
 
 ---
