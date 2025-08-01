@@ -12,6 +12,32 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# --- NEW HEADER FOR COGNITIVECLOUD.AI (ADDED HERE) ---
+st.markdown("""
+<style>
+    .cognitive-cloud-header {
+        text-align: center;
+        padding: 10px;
+        background-color: #F0F2F6; /* Light background for the header */
+        border-bottom: 1px solid #E0E0E0;
+        margin-bottom: 20px;
+    }
+    .cognitive-cloud-header a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #6A0572; /* CognitiveCloud.ai primary color */
+        text-decoration: none;
+    }
+    .cognitive-cloud-header a:hover {
+        text-decoration: underline;
+    }
+</style>
+<div class="cognitive-cloud-header">
+    <a href="https://cognitivecloud-launcher.streamlit.app/#cognitive-cloud-ai-app-launcher" target="_blank">CognitiveCloud.ai</a>
+</div>
+""", unsafe_allow_html=True)
+# --- END NEW HEADER ---
+
 @st.cache_data
 def generate_conic_images():
     """Generate matplotlib plots for each conic section"""
@@ -122,15 +148,15 @@ st.markdown("""
 - Connect mathematical theory to real-world applications
 
 **Standards Alignment:**
-- HSG.GPE.A.2 – Derive the equation of a parabola given a focus and directrix  
+- HSG.GPE.A.2 – Derive the equation of a parabola given a focus and directrix
 - HSG.GPE.A.1 – Derive the equation of a circle given its center and radius
 
 ---
 
 ### 📍 Understanding h and k
-In all conic section equations, **`h` and `k`** represent the coordinates of the **center** (or **vertex**, for parabolas):  
-- `h` shifts the graph **left or right**  
-- `k` shifts the graph **up or down**  
+In all conic section equations, **`h` and `k`** represent the coordinates of the **center** (or **vertex**, for parabolas):
+- `h` shifts the graph **left or right**
+- `k` shifts the graph **up or down**
 So the point **(h, k)** tells you where the conic section is positioned on the graph.
 """)
 
@@ -230,26 +256,26 @@ q3_answer = st.radio(
 if st.button("📊 Submit Quiz"):
     score = 0
     total_questions = 3
-    
+
     # Check answers
     if q1_answer == "Hyperbola":
         score += 1
         st.success("✅ Question 1: Correct! A vertical slice through the axis creates a hyperbola.")
     else:
         st.error(f"❌ Question 1: Incorrect. You selected {q1_answer}, but the correct answer is Hyperbola.")
-    
+
     if q2_answer == "Parabola":
         score += 1
         st.success("✅ Question 2: Correct! Satellite dishes use parabolic shapes to focus signals.")
     else:
         st.error(f"❌ Question 2: Incorrect. You selected {q2_answer}, but the correct answer is Parabola.")
-    
+
     if q3_answer == "A parabola forms":
         score += 1
         st.success("✅ Question 3: Correct! When the plane is parallel to the cone's slant, a parabola forms.")
     else:
         st.error(f"❌ Question 3: Incorrect. You selected {q3_answer}, but the correct answer is 'A parabola forms'.")
-    
+
     # Display final score
     percentage = (score / total_questions) * 100
     if percentage >= 80:
